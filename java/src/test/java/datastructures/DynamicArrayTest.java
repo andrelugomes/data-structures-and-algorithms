@@ -2,8 +2,6 @@ package datastructures;
 
 import org.junit.Test;
 
-import java.util.Date;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
@@ -45,13 +43,15 @@ public class DynamicArrayTest {
     }
 
     @Test
-    public void shouldInsertIntoArray(){
+    public void shouldInsertIntoArrayInOrder(){
         var array = new DynamicArray<Integer>(1);
-        array.insert(2,333);
+
+        //Ordered insertion
         array.insert(0,123);
         array.insert(1,321);
+        array.insert(2,333);
 
-        assertThat(array.size(), is(3)); //capacity 4
+        assertThat(array.size(), is(3));
     }
 
     @Test
@@ -64,7 +64,7 @@ public class DynamicArrayTest {
         array.delete(1);
 
         assertThat(array.size(), is(2));
-        assertThat(array.get(0), is("object"));
+        assertThat(array.get(0), is("object1"));
     }
 
     @Test
