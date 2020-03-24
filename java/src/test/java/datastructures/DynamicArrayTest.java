@@ -18,7 +18,7 @@ public class DynamicArrayTest {
 
     @Test
     public void shouldTestSet(){
-        var strings = new DynamicArray<String>(1);
+        var strings = new DynamicArray<String>(2);
         strings.set(0, "Cool String");
 
         assertThat(strings.get(0), is("Cool String"));
