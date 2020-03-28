@@ -21,6 +21,7 @@ public class DynamicArray<T> {
 
     public void set(int index, T value) {
         data[index] = value;
+        size++;
     }
 
     public void insert(int index, T value) {

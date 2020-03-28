@@ -22,10 +22,12 @@ public class DynamicArrayTest {
         strings.set(0, "Cool String");
 
         assertThat(strings.get(0), is("Cool String"));
+        assertThat(strings.size(), is(1));
 
         var numbers = new DynamicArray<Integer>(1);
         numbers.set(0, 123);
 
+        assertThat(numbers.size(), is(1));
         assertThat(numbers.get(0), is(123));
     }
 
@@ -77,6 +79,16 @@ public class DynamicArrayTest {
 
         assertThat(array.size(), is(1));
         assertThat(array.get(0), is("first"));
+    }
+
+    @Test
+    public void shouldDeleteLastFromArrayWithSize1(){
+        var array = new DynamicArray<>(1);
+        array.add("one");
+
+        array.delete(0);
+
+        assertThat(array.size(), is(0));
     }
 
     @Test
