@@ -29,4 +29,23 @@ describe DynamicArray do
         expect(array.get(0)).to eq 'new'
     end
 
+    it 'should delete by index' do
+        array = DynamicArray.new(1)
+        array.add 'delete'
+        array.add 'rest'
+
+        array.delete(0)
+
+        expect(array.size).to eq 1
+        expect(array.get(0)).to eq 'rest'
+    end
+
+    it 'should verify if contains' do
+        array = DynamicArray.new(1)
+        array.add 'text'
+        array.add 'word'
+
+        expect(array.contains('text')).to eq true
+    end
+
 end
