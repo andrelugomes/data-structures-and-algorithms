@@ -22,11 +22,11 @@ class DynamicArray
 
     def insert(index, value)
         resize?
-        
+
         #shift up
-        (@size + 1).downto(index).each { |i|
+        (@size + 1).downto(index).each do |i|
             @data[i] = @data[i - 1]
-        }
+        end
 
         @data[index] = value
         increase_size
@@ -42,12 +42,12 @@ class DynamicArray
 
     def delete(index)
         #shift down
-        for i in index..(@size - 1)
+        (index..(@size - 1)).each do |i|
             @data[i] = @data[i + 1]
         end
 
         #clear last
-        if index == @size then
+        if index == @size
             @data[index] = nil
         else
             @data[@size - 1] = nil
@@ -58,13 +58,13 @@ class DynamicArray
 
     def contains(value)
         #@data.include? value
-        @data.each { |data|
-            if data == value then return true 
+        @data.each do |data|
+            if data == value then return true
             end
-        }
-        return false
+        end
+        false
     end
-    
+
     private
     def resize?
         if @size == @initial_capacity then resize end
