@@ -81,7 +81,7 @@ public class LinkedList<T> {
         this.head = null; //let the garbage collector work. Clean all nodes
     }
 
-    public void delete(T value) {
+    public void delete(final T value) {
         if (head == null) {
             return;
         }
@@ -95,13 +95,12 @@ public class LinkedList<T> {
 
             //while we are not at TAIL
             while (current.next != null) {
-                current = current.next;
-                if (current.data.equals(value)) {
-                    current = current.next.next;
+                if (current.next.data.equals(value)) {
+                    current.next = current.next.next;
                     removed = true;
                     break;
                 }
-
+                current = current.next;
             }
         }
         decreaseSizeIf(removed);
@@ -135,9 +134,7 @@ public class LinkedList<T> {
         }
     }
 
-
     private static class Node<T> {
-
         T data;
         Node<T> next;
 

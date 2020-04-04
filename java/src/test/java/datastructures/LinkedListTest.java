@@ -82,4 +82,18 @@ public class LinkedListTest {
         assertThat(linkedList.getLast(), is(1));
     }
 
+
+    @Test
+    public void shouldDeleteTailFromListByValue() {
+        var linkedList = new LinkedList<Integer>();
+        linkedList.addFront(1);
+        linkedList.addFront(2);
+        linkedList.addFront(3);
+
+        linkedList.delete(1);
+
+        assertThat(linkedList.size(), is(2));
+        assertThat(linkedList.getFirst(), is(3));
+        assertThat(linkedList.getLast(), is(2));
+    }
 }
