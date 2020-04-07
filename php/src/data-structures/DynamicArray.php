@@ -7,13 +7,20 @@ use SplFixedArray;
 class DynamicArray
 {
 
-    private $size, $initialCapacity, $data;
+    /** @var int $size */
+    private $size;
+
+    /** @var int $initialCapacity */
+    private $initialCapacity;
+
+    /** @var mixed SplFixedArray */
+    private $data;
 
     /**
      * DynamicClass constructor.
-     * @param $initialCapacity
+     * @param int $initialCapacity
      */
-    public function __construct($initialCapacity)
+    public function __construct(int $initialCapacity)
     {
         $this->initialCapacity = $initialCapacity;
         //$this->data = []; //Dynamic by nature
@@ -23,9 +30,9 @@ class DynamicArray
 
     /**
      * @param int $index
-     * @param $value
+     * @param mixed $value
      */
-    public function set(int $index, $value )
+    public function set(int $index, $value): void
     {
         $this->data[$index] = $value;
         $this->size++;
@@ -42,12 +49,12 @@ class DynamicArray
 
     /**
      * @param int $index
-     * @param $value
+     * @param mixed $value
      */
-    public function insert(int $index, $value)
+    public function insert(int $index, $value): void
     {
         //Check
-        if($this->size == $this->initialCapacity) {
+        if ($this->size == $this->initialCapacity) {
             $this->resize();
         }
 
@@ -61,12 +68,12 @@ class DynamicArray
     }
 
     /**
-     * @param $value
+     * @param mixed $value
      */
-    public function add($value)
+    public function add($value): void
     {
         //Check
-        if($this->size == $this->initialCapacity) {
+        if ($this->size == $this->initialCapacity) {
             $this->resize();
         }
 
@@ -77,7 +84,7 @@ class DynamicArray
     /**
      * @param int $index
      */
-    public function delete(int $index)
+    public function delete(int $index): void
     {
         //copy down [1 2 3] => [1 3 3]  <- shift down
         for ($i = $index; $i < $this->size - 1; $i++) {
@@ -85,7 +92,7 @@ class DynamicArray
         }
 
         //clear last
-        if ($index == $this->size){
+        if ($index == $this->size) {
             $this->data[$index] = null;
         } else {
             $this->data[$this->size - 1] = null;
@@ -111,7 +118,7 @@ class DynamicArray
     }
 
     /**
-     * @param $value
+     * @param mixed $value
      * @return bool
      */
     public function contains($value): bool
@@ -124,7 +131,7 @@ class DynamicArray
         return false;
     }
 
-    private function resize()
+    private function resize(): void
     {
         $newCapacity = $this->initialCapacity * 2;
         $newData = new SplFixedArray($newCapacity);

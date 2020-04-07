@@ -1,5 +1,5 @@
 {
-    "name": "andrelugomes/data-structures-algorithms",
+    "name": "andrelugomes/data-structures-and-algorithms",
     "description": "Udemy course",
     "type": "project",
     "require-dev": {
@@ -22,5 +22,16 @@
             "DataStructures\\": "src/data-structures/",
             "Algorithms\\": "src/algorithms/"
         }
+    },
+    "scripts": {
+        "test": "phpunit tests/",
+        "phpstan": "phpstan analyse src/ --level 8",
+        "cs": "phpcs --standard=psr12 -p src",
+        "build": [
+            "@composer install",
+            "@test",
+            "@cs",
+            "@phpstan"
+        ]
     }
 }

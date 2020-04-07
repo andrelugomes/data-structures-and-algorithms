@@ -42,6 +42,17 @@ class LinkedListTest {
     }
 
     @Test
+    fun `Should Add To Back for only one node`() {
+        val list = LinkedList<String>()
+
+        list.addBack("tail")
+
+        assertThat(list.size()).isEqualTo(1)
+        assertThat(list.getLast()).isEqualTo("tail")
+        assertThat(list.getFirst()).isEqualTo("tail")
+    }
+
+    @Test
     fun `Should Delete from List`() {
         val list = LinkedList<Any>()
         list.addFront("add1")
