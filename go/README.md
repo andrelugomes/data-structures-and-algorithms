@@ -6,13 +6,13 @@ trying to run outside GOPATH :(
 
 ## Tests
 
-```go
+```shell script
 go test
 ```
 
 ## Benchmarks
 
-```go
+```shell script
 go test -bench=. -benchmem -v -failfast
 ```
 
