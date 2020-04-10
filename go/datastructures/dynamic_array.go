@@ -16,6 +16,7 @@ func (da *DynamicArray) Get(index int) interface{} {
 
 func (da *DynamicArray) Set(index int, data interface{}) {
 	da.data[index] = data
+	da.size++
 }
 
 func (da *DynamicArray) Insert(index int, value interface{})  {
