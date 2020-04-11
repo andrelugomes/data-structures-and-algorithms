@@ -13,6 +13,11 @@ rvm alias create default ruby-2.7.0
 rvm use default
 ```
 
+#### Remembering
+
++ https://www.rubyguides.com/2018/11/attr_accessor/
++ http://www.betterspecs.org/
+
 ## Bundler
 
 gem install bundler
