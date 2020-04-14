@@ -35,3 +35,7 @@ bin/rspec --init
 bundle exec rspec
 ```
 
+# Links
+
++ https://medium.com/amiralles/mastering-data-structures-in-ruby-linked-lists-708347a30360
+

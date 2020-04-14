@@ -21,3 +21,5 @@ go test -bench=. -benchmem -v -failfast
 + https://blog.golang.org/go-slices-usage-and-internals
 + https://hopding.com/interesting-golang-features
 + https://golang.org/pkg/testing/
+
++ https://www.golangprograms.com/golang-program-for-implementation-of-linked-list.html

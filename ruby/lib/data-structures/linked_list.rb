@@ -8,12 +8,9 @@ class LinkedList
 
   def add_front(value)
     new_node = Node.new(value)
-    if @head.nil?
-      @head = new_node
-    else
-      new_node.next = @head
-    end
+    new_node.next = @head unless @head.nil?
 
+    @head = new_node
     increase_size
   end
 
@@ -37,13 +34,40 @@ class LinkedList
   end
 
   def first
-    @head.data
+    @head ? @head.data : nil
   end
 
   def last
     tail = to_tail
 
-    tail.data
+    tail ? tail.data : nil
+  end
+
+  def delete(value)
+    return if @head.nil?
+
+    current = @head
+
+    if value == current.data
+      @head = current.next
+    else
+      while !current.next.nil?
+        if value == current.next.data
+          current.next = current.next.next
+          break
+        end
+        current = current.next
+      end
+    end
+    decrease_size
+  end
+
+  def to_s
+    node = @head
+    puts node
+    while (node = node.next)
+      puts node
+    end
   end
 
   private
@@ -58,6 +82,10 @@ class LinkedList
     @size += 1
   end
 
+  def decrease_size
+    @size -= 1
+  end
+
   class Node
     attr_reader :data
     attr_accessor :next
@@ -65,6 +93,10 @@ class LinkedList
     def initialize(data)
       @data = data
       @next = nil
+    end
+
+    def to_s
+      "Node [data: #{@data}]"
     end
   end
 end

@@ -28,9 +28,10 @@ describe '#first' do
   context 'get the firt node called Head' do
     list = LinkedList.new
     list.add_front('head')
+    list.add_front('head2')
 
     it 'has head' do
-      expect(list.first).to eq 'head'
+      expect(list.first).to eq 'head2'
     end
   end
 end
@@ -62,6 +63,55 @@ describe '#add_back' do
 
     it 'has tail' do
       expect(list.last).to eq 'single node'
+    end
+  end
+end
+
+describe '#delete' do
+  context 'when delete head by value' do
+    list = LinkedList.new
+    list.add_front(1)
+    list.add_front(2)
+    list.add_front(3)
+    list.add_front(4)
+
+    list.delete(4)
+
+    it 'has a new head' do
+      expect(list.first).to eq 3
+    end
+  end
+end
+
+describe '#delete' do
+  context 'when delete tail node by value' do
+    list = LinkedList.new
+    list.add_front(1)
+    list.add_front(2)
+    list.add_front(3)
+    list.add_front(4)
+
+    list.delete(1)
+
+    it 'has a new tail' do
+      expect(list.last).to eq 2
+    end
+  end
+end
+
+describe '#delete' do
+  context 'when delete a middle node by value' do
+    list = LinkedList.new
+    list.add_front("a")
+    list.add_front("b")
+    list.add_front("c")
+    list.add_front("d")
+
+    list.delete("b")
+
+    it 'has a new tail' do
+      expect(list.first).to eq "d"
+      expect(list.last).to eq "a"
     end
   end
 end
