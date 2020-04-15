@@ -15,29 +15,50 @@ public class DynamicArray<T> {
         this.initialCapacity = initialCapacity;
     }
 
+    /**
+     * O(1)
+     *
+     *
+     * @param index
+     * @return
+     */
     public T get(final int index) {
         return (T) data[index];
     }
 
+    /**
+     * O(1)
+     *
+     *
+     * @param index
+     * @param value
+     */
     public void set(int index, T value) {
         data[index] = value;
         size++;
     }
 
+    /**
+     * O(n)
+     *
+     *
+     * @param index
+     * @param value
+     */
     public void insert(int index, T value) {
         // Check size
         if (size == initialCapacity) {
-            resize();
+            resize(); // --> O(n)
         }
 
-        // Copy up | Shift
-        if (size - index >= 0) System.arraycopy(data, index, data, index + 1, size - index);
-        /*for (int j = size; j > index; j--) {
+        // Manual Array Copy | Shift
+        for (int j = size; j > index; j--) {  //--> O(n)
             data[j] = data[j - 1];
-        }*/
+        }
+        //if (size - index >= 0) System.arraycopy(data, index, data, index + 1, size - index);
 
         // Insert
-        data[index] = value;
+        data[index] = value;  //--> O(1)
         size++;
     }
 
@@ -61,9 +82,16 @@ public class DynamicArray<T> {
         data[size] = value;
         size++;
     }
+
+    /**
+     * O(n)
+     *
+     *
+     * @param index
+     */
     public void delete(int index) {
         // Copy down
-        for (int j = index; j < size - 1; j++) {
+        for (int j = index; j < size - 1; j++) { // --> O(n)
             data[j] = data[j + 1];
         }
 
@@ -77,12 +105,23 @@ public class DynamicArray<T> {
         size--;
     }
 
+    /**
+     * O(1)
+     *
+     * @return
+     */
     public boolean isEmpty() {
         return size == 0;
     }
 
+    /**
+     * 0(n)
+     *
+     * @param value
+     * @return
+     */
     public boolean contains(T value) {
-        for (int i = 0; i <= size - 1; i++) {
+        for (int i = 0; i <= size - 1; i++) { // --> 0(n)
             T currentValue = (T) data[i];
             if (currentValue.equals(value)) {
                 return true;
@@ -92,6 +131,8 @@ public class DynamicArray<T> {
     }
 
     /**
+     * O(n) : For loop array copy
+     *
      * System.arraycopy
      *
      * http://hg.openjdk.java.net/jdk/jdk11/file/1ddf9a99e4ad/src/hotspot/share/prims/jvm.cpp
@@ -104,7 +145,7 @@ public class DynamicArray<T> {
 
         if (initialCapacity >= 0) System.arraycopy(data, 0, newData, 0, initialCapacity);
 
-        //manual copy array
+        //manual array copy
         /*for (int i = 0; i < initialCapacity; i++) {
             newData[i] = data[i];
         }*/

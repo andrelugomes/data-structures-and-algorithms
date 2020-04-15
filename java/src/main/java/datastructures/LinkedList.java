@@ -5,6 +5,13 @@ public class LinkedList<T> {
     private int size = 0;
     private Node<T> head;
 
+    /**
+     * O(1)
+     *
+     * without loops
+     *
+     * @param data
+     */
     public void addFront(final T data) {
         //create a new new Node
         var newNode = new Node<T>(data);
@@ -19,6 +26,11 @@ public class LinkedList<T> {
         increaseSize();
     }
 
+    /**
+     * O(n)
+     *
+     * @param data
+     */
     public void addBack(T data) {
         var newTail = new Node<T>(data);
 
@@ -26,11 +38,16 @@ public class LinkedList<T> {
             head = newTail;
         }else {
             //Set new TAIL
-            toTail().next = newTail;
+            toTail().next = newTail; // --> O(n)
         }
         increaseSize();
     }
 
+    /**
+     * O(1)
+     *
+     * @return
+     */
     public T getFirst() {
         if(this.head == null){
             throw new IllegalStateException("Head is NULL");
@@ -39,8 +56,9 @@ public class LinkedList<T> {
     }
 
     /**
-     * Get last is same as Get Tail
+     * O(n)
      *
+     * Get last is same as Get Tail
      * @return Tail
      */
     public T getLast() {
@@ -48,7 +66,7 @@ public class LinkedList<T> {
             throw new IllegalStateException("Head is NULL");
         }
 
-        return toTail().data;
+        return toTail().data; // --> O(n)
     }
 
     public int size() {
@@ -56,8 +74,9 @@ public class LinkedList<T> {
     }
 
     /**
-     * Size by brute force
+     * O(n)
      *
+     * Size by brute force
      * @return
      */
     public int count() {
@@ -68,7 +87,7 @@ public class LinkedList<T> {
             var current = head;
 
             //while we are not at TAIL
-            while (current.next != null) {
+            while (current.next != null) { // --> O(n)
                 current = current.next;
                 count++;
             }
@@ -81,6 +100,11 @@ public class LinkedList<T> {
         this.head = null; //let the garbage collector work. Clean all nodes
     }
 
+    /**
+     * O(n)
+     *
+     * @param value
+     */
     public void delete(final T value) {
         if (head == null) {
             return;
@@ -94,7 +118,7 @@ public class LinkedList<T> {
         } else {
 
             //while we are not at TAIL
-            while (current.next != null) {
+            while (current.next != null) { // --> 0(n)
                 if (current.next.data.equals(value)) {
                     current.next = current.next.next;
                     removed = true;
@@ -107,10 +131,10 @@ public class LinkedList<T> {
     }
 
     /**
+     * O(n)
+     *
      * Start at the Head
-     *
      * Walking down to the end
-     *
      * @return tail
      */
     private Node<T> toTail() {
