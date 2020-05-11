@@ -2,7 +2,7 @@ package datastructures;
 
 public class LinkedList<T> {
 
-    private int size = 0;
+    private int size;
     private Node<T> head;
 
     /**
@@ -14,7 +14,7 @@ public class LinkedList<T> {
      */
     public void addFront(final T data) {
         //create a new new Node
-        var newNode = new Node<T>(data);
+        final var newNode = new Node<T>(data);
 
         if (head != null) {
             //Set new new to head then pointer to older head
@@ -31,8 +31,8 @@ public class LinkedList<T> {
      *
      * @param data
      */
-    public void addBack(T data) {
-        var newTail = new Node<T>(data);
+    public void addBack(final T data) {
+        final var newTail = new Node<T>(data);
 
         if (head == null){
             head = newTail;
@@ -69,7 +69,7 @@ public class LinkedList<T> {
         return toTail().data; // --> O(n)
     }
 
-    public int size() {
+    public int getSize() {
         return size;
     }
 
@@ -97,7 +97,7 @@ public class LinkedList<T> {
 
     public void clear() {
         this.size = 0;
-        this.head = null; //let the garbage collector work. Clean all nodes
+        this.head = Node.EMPTY; //let the garbage collector work. Clean all nodes
     }
 
     /**
@@ -159,8 +159,9 @@ public class LinkedList<T> {
     }
 
     private static class Node<T> {
-        T data;
-        Node<T> next;
+        private static final Node EMPTY = null;
+        private T data;
+        private Node<T> next;
 
         public Node(final T data) {
             this.data = data;

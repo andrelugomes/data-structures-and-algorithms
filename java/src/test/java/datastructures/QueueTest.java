@@ -9,7 +9,7 @@ public class QueueTest {
 
     @Test
     public void shouldAddToQueue() {
-        Queue<String> queue = new Queue<>();
+        final Queue<String> queue = new Queue<>();
 
         queue.add("first");
         queue.add("second");
@@ -20,7 +20,7 @@ public class QueueTest {
 
     @Test
     public void shouldRemoveFromQueue() {
-        Queue<String> queue = new Queue<>();
+        final Queue<String> queue = new Queue<>();
 
         queue.add("item1");
         queue.add("item2");
@@ -28,9 +28,9 @@ public class QueueTest {
 
         assertThat(queue.getSize(), is(3));
 
-        var item1 = queue.remove();
-        var item2 = queue.remove();
-        var item3 = queue.remove();
+        final var item1 = queue.remove();
+        final var item2 = queue.remove();
+        final var item3 = queue.remove();
 
         assertThat(queue.getSize(), is(0));
         assertThat(item1, is("item1"));
@@ -40,9 +40,9 @@ public class QueueTest {
 
     @Test
     public void shouldRemoveFromEmptyQueue() {
-        Queue<String> queue = new Queue<>();
+        final Queue<String> queue = new Queue<>();
 
-        var item = queue.remove();
+        final var item = queue.remove();
 
         assertThat(queue.getSize(), is(0));
         assertNull(item);

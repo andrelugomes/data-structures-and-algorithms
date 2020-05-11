@@ -7,14 +7,16 @@ public class Queue<T> {
     private int size;
 
     /**
+     * O(1)
+     *
      * Add to tail
      *
      * @param value
      */
-    public void add(T value) {
+    public void add(final T value) {
 
-        var node = new Node<>(value);
-        var currentTail = this.tail;
+        final var node = new Node<>(value);
+        final var currentTail = this.tail;
 
         if (currentTail != null) {
             currentTail.next = node;
@@ -31,8 +33,13 @@ public class Queue<T> {
         return this.size;
     }
 
+    /**
+     * O(1)
+     *
+     * @return
+     */
     public T remove() {
-        var currentHead = this.head;
+        final var currentHead = this.head;
 
         if (currentHead == null) {
             return null;
@@ -50,8 +57,8 @@ public class Queue<T> {
      * @param <T>
      */
     private static class Node<T> {
-        T data;
-        Node<T> next;
+        private T data;
+        private Node<T> next;
 
         public Node(final T data) {
             this.data = data;

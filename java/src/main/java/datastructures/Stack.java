@@ -10,9 +10,9 @@ public class Stack<T> {
      *
      * @param data
      */
-    public void push(T data) {
+    public void push(final T data) {
         // Create new node
-        var node = new Node(data);
+        final var node = new Node(data);
 
         // Set it's next to be head
         node.next = this.head;
@@ -42,7 +42,7 @@ public class Stack<T> {
         }
 
         // Store the value you want to return
-        var result = this.head.getData();
+        final var result = this.head.getData();
 
         // Set the current head.next to be the new head
         this.head = this.head.next;
@@ -61,8 +61,8 @@ public class Stack<T> {
      * @param <T>
      */
     private static class Node<T> {
-        T data;
-        Node<T> next;
+        protected T data;
+        protected Node<T> next;
 
         public Node(final T data) {
             this.data = data;

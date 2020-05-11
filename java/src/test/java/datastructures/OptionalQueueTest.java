@@ -9,15 +9,15 @@ public class OptionalQueueTest {
 
     @Test
     public void shouldAddThenRemoveFromQueue() {
-        var queue = new OptionalQueue<String>();
+        final var queue = new OptionalQueue<String>();
 
         queue.add("item1");
         queue.add("item2");
 
         assertThat(queue.getSize(), is(2));
 
-        var item1 = queue.safeRemove();
-        var item2 = queue.safeRemove();
+        final var item1 = queue.safeRemove();
+        final var item2 = queue.safeRemove();
 
         assertThat(queue.getSize(), is(0));
         assertTrue(item1.isPresent());

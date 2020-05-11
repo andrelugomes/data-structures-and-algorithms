@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'pmd'
 }
 
 group 'com.github.andrelugomes'
@@ -13,4 +14,12 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+pmd {
+    consoleOutput = true
+    toolVersion = "6.21.0"
+    rulePriority = 5
+    ruleSetFiles = files("pmd-ruleset.xml")
+    ruleSets = []
 }

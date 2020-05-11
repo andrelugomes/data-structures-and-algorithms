@@ -6,13 +6,15 @@ package datastructures;
  */
 public class DynamicArray<T> {
 
+    public static final Object EMPTY = null;
     private Object[] data;
-    private int size = 0;
+    private int size;
     private int initialCapacity;
 
     public DynamicArray(final int initialCapacity) {
         this.data = new Object[initialCapacity];
         this.initialCapacity = initialCapacity;
+        this.size = 0;
     }
 
     /**
@@ -33,7 +35,7 @@ public class DynamicArray<T> {
      * @param index
      * @param value
      */
-    public void set(int index, T value) {
+    public void set(final int index, final T value) {
         data[index] = value;
         size++;
     }
@@ -45,7 +47,7 @@ public class DynamicArray<T> {
      * @param index
      * @param value
      */
-    public void insert(int index, T value) {
+    public void insert(final int index, final T value) {
         // Check size
         if (size == initialCapacity) {
             resize(); // --> O(n)
@@ -62,19 +64,13 @@ public class DynamicArray<T> {
         size++;
     }
 
-    public int size() {
+    public int getSize() {
         return this.size;
-    }
-
-    public void print() {
-        for (int i = 0; i < size; i++) {
-            System.out.println("data[i] = " + data[i]);
-        }
     }
 
     // Some array implementations offer methods like insert (also known as pushBack).
     // Which is like insert, only in does the insert at the end of the array.(append)
-    public void add(T value) {
+    public void add(final T value) {
         if (size == initialCapacity) {
             resize();
         }
@@ -89,7 +85,7 @@ public class DynamicArray<T> {
      *
      * @param index
      */
-    public void delete(int index) {
+    public void delete(final int index) {
         // Copy down
         for (int j = index; j < size - 1; j++) { // --> O(n)
             data[j] = data[j + 1];
@@ -97,10 +93,10 @@ public class DynamicArray<T> {
 
         // Clear if last element in array
         if (index == size) {
-            data[index] = null;
+            data[index] = EMPTY;
         }else {
             //Clear last value index
-            data[size - 1] = null;
+            data[size - 1] = EMPTY;
         }
         size--;
     }
@@ -120,9 +116,9 @@ public class DynamicArray<T> {
      * @param value
      * @return
      */
-    public boolean contains(T value) {
+    public boolean contains(final T value) {
         for (int i = 0; i <= size - 1; i++) { // --> 0(n)
-            T currentValue = (T) data[i];
+            final T currentValue = (T) data[i];
             if (currentValue.equals(value)) {
                 return true;
             }
@@ -140,10 +136,12 @@ public class DynamicArray<T> {
      * http://hg.openjdk.java.net/jdk7/jdk7/hotspot/file/9b0ca45cd756/src/share/vm/oops/objArrayKlass.cpp#l168
      */
     private void resize() {
-        var newCapacity = initialCapacity * 2;
-        var newData = new Object[newCapacity];
+        final var newCapacity = initialCapacity * 2;
+        final var newData = new Object[newCapacity];
 
-        if (initialCapacity >= 0) System.arraycopy(data, 0, newData, 0, initialCapacity);
+        if (initialCapacity >= 0) {
+            System.arraycopy(data, 0, newData, 0, initialCapacity);
+        }
 
         //manual array copy
         /*for (int i = 0; i < initialCapacity; i++) {

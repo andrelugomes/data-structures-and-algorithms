@@ -11,36 +11,36 @@ public class StackTest {
 
     @Test(expected = IllegalStateException.class)
     public void shouldExpectAExceptionBecauseHeadIsNull() {
-        var stack = new Stack<Integer>();
+        final var stack = new Stack<Integer>();
 
         stack.pop();
     }
 
     @Test
     public void shouldPushThanPopFromStack() {
-        var stack = new Stack<String>();
-        stack.push("hi");
+        final var stack = new Stack<String>();
+        stack.push("holla");
         stack.push("hello");
         stack.push("olá");
 
         assertThat(stack.getSize(), is(3));
 
-        var ola = stack.pop();
+        final var ola = stack.pop();
         assertThat(stack.getSize(), is(2));
         assertThat(ola, is("olá"));
 
-        var hello = stack.pop();
+        final var hello = stack.pop();
         assertThat(stack.getSize(), is(1));
         assertThat(hello, is("hello"));
 
-        var hi = stack.pop();
+        final var holla = stack.pop();
         assertThat(stack.getSize(), is(0));
-        assertThat(hi, is("hi"));
+        assertThat(holla, is("holla"));
     }
 
     @Test
     public void shouldVerifyIfIsEmpty() {
-        var stack = new Stack<Array>();
+        final var stack = new Stack<Array>();
 
         assertTrue(stack.isEmpty());
     }
