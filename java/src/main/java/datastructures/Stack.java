@@ -2,7 +2,7 @@ package datastructures;
 
 public class Stack<T> {
 
-    private Node<T> head; // add and remove here
+    private Stack.Node<T> head; // add and remove here
     private int size;
 
     /**

@@ -2,8 +2,8 @@ package datastructures;
 
 public class Queue<T> {
 
-    private Node head; // remove from here
-    private Node tail; // add here
+    private Queue.Node<T> head; // remove from here
+    private Queue.Node<T> tail; // add here
     private int size;
 
     /**

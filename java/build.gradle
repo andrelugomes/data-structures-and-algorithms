@@ -6,7 +6,7 @@ plugins {
 group 'com.github.andrelugomes'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.11
+sourceCompatibility = 1.14
 
 repositories {
     mavenCentral()
