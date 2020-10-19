@@ -1,12 +1,7 @@
 package datastructures
 
-type node struct {
-	data interface{}
-	next *node
-}
-
 type LinkedList struct {
-	head *node
+	head *Node
 	size int
 }
 
@@ -25,23 +20,23 @@ func (list *LinkedList) AddFront(data interface{}) {
 
 	list.head = newNode*/
 
-	list.head = &node{
-		data: data,
-		next: list.head,
+	list.head = &Node{
+		Data: data,
+		Next: list.head,
 	}
 	list.size++
 }
 
 func (list *LinkedList) AddBack(data interface{}) {
 
-	newTail := &node{
-		data: data,
-		next: nil,
+	newTail := &Node{
+		Data: data,
+		Next: nil,
 	}
 	currentTail := list.tail()
 
 	if currentTail != nil {
-		currentTail.next = newTail
+		currentTail.Next = newTail
 	} else {
 		list.head = newTail
 	}
@@ -49,18 +44,18 @@ func (list *LinkedList) AddBack(data interface{}) {
 }
 
 func (list *LinkedList) First() interface{} {
-	return list.head.data
+	return list.head.Data
 }
 
 func (list *LinkedList) Last() interface{} {
-	return list.tail().data
+	return list.tail().Data
 }
 
-func (list *LinkedList) tail() *node {
+func (list *LinkedList) tail() *Node {
 	node := list.head
 
-	for node != nil && node.next != nil {
-		node = node.next
+	for node != nil && node.Next != nil {
+		node = node.Next
 	}
 	return node
 }
@@ -69,16 +64,16 @@ func (list *LinkedList) Delete(value interface{}) {
 	current := list.head
 
 	//if head
-	if value == current.data {
-		list.head = current.next
+	if value == current.Data {
+		list.head = current.Next
 		list.size--
 		return
 	}
-	for current != nil && current.next != nil {
-		if value == current.next.data {
-			current.next = current.next.next
+	for current != nil && current.Next != nil {
+		if value == current.Next.Data {
+			current.Next = current.Next.Next
 		}
-		current = current.next
+		current = current.Next
 	}
 	list.size--
 }

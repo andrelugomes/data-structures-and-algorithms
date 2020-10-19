@@ -1,19 +1,15 @@
 # Data Structures and Algorithms
 
-# GOPATH | GO Mod
-
-trying to run outside GOPATH :(
-
 ## Tests
 
 ```shell script
-go test
+go test github.com/andrelugomes/data-structures-and-algorithms/datastructures -v
 ```
 
 ## Benchmarks
 
 ```shell script
-go test -bench=. -benchmem -v -failfast
+go test github.com/andrelugomes/data-structures-and-algorithms/datastructures -bench=. -benchmem -v -failfast
 ```
 
 ## Links
